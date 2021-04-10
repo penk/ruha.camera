@@ -1,37 +1,85 @@
-## Welcome to GitHub Pages
+# RUHAcam 
 
-You can use the [editor on GitHub](https://github.com/penk/ruha.camera/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+A 3D Printable Retro-style Camera Powered by Raspberry Pi HQ Camera
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+![](https://github.com/penk/ruha.camera/raw/main/images/ruhacam-cover.jpg)
 
-### Markdown
+## Bill of Materials 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- Raspberry Pi Zero W + microSD card 
+- Raspberry Pi HQ Camera 
+- 16mm 10MP Telephoto Lens 
+- 2.2" TFT Display 
+- TP4056 Micro USB Battery Charger 
+- MT3608 DC-DC Step Up Boost Module 
+- 2000mAh Li-Pi battery 
+- Power switch 
+- Shutter button 
+- Dupont jumper wires 
+- 3D printed case (see [STL](STL) folder)
+- Leather patches for couch (optional)
 
-```markdown
-Syntax highlighted code block
+![](https://github.com/penk/ruha.camera/raw/main/images/ruhacam-bom.jpg)
 
-# Header 1
-## Header 2
-### Header 3
+## Schematic
 
-- Bulleted
-- List
+- Power after converter connects to Pi's `5V` (pin 4) and `GND` (pin 6)
+- Shutter button connects to `GPIO26` (pin 37) and `GND` (pin 39)
 
-1. Numbered
-2. List
+![](https://github.com/penk/ruha.camera/raw/main/images/ruhacam-schematic.jpg)
 
-**Bold** and _Italic_ and `Code` text
+| Raspberry Pi pins | TFT display |
+|-------------------|-------------|
+| 3v3 (pin 17) | VCC |
+| GND (pin 20) | GND |
+| GPIO8 (pin 24) | CS |
+| GPIO23 (pin 16) | RESET |
+| GPIO24 (pin 18) | DC |
+| GPIO10 (pin 19) | MOSI |
+| GPIO11 (pin 23) | SCK | 
+| GPIO18 (pin 12) | LED | 
+| GPIO9 (pin 21) | MISO | 
 
-[Link](url) and ![Image](src)
-```
+## Assembly 
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+| ![](https://github.com/penk/ruha.camera/raw/main/images/asm-2.jpg) | ![](https://github.com/penk/ruha.camera/raw/main/images/asm-3.jpg) |
+|-----------------------|-----------------------|
+| ![](https://github.com/penk/ruha.camera/raw/main/images/asm-4.jpg) | ![](https://github.com/penk/ruha.camera/raw/main/images/asm-1.jpg) |
 
-### Jekyll Themes
+## Software 
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/penk/ruha.camera/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Flash Raspberry Pi OS to micro SD card. Then add following lines into `config.txt`: 
 
-### Support or Contact
+    gpu_mem=256
+    dtoverlay=rpi-display
+    display_rotate=2
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+For application, simply execute this script after boot: 
+
+    from gpiozero import Button
+    from picamera import PiCamera
+    import time
+
+    button = Button(26)
+
+    with PiCamera() as camera:
+        camera.resolution = (4056, 3040)
+        camera.framerate = 5
+        frame = int(time.time())
+        camera.start_preview()
+        while True:
+            button.wait_for_press()
+            camera.capture('/home/pi/Pictures/%03d.jpg' % frame)
+            frame += 1
+
+## Sample Pictures 
+
+| ![](https://github.com/penk/ruha.camera/raw/main/images/1616840925.JPG) | ![](https://github.com/penk/ruha.camera/raw/main/images/1616769300.JPG) |
+|----------------------------|----------------------------|
+| ![](https://github.com/penk/ruha.camera/raw/main/images/1616769323.JPG) | ![](https://github.com/penk/ruha.camera/raw/main/images/1616840940.JPG) |
+
+## Copyright and License
+
+Copyright (c) 2021 Ruha Cheng & Penk Chen. All rights reserved. 
+
+All files are licensed under MIT license, see the LICENSE for more information. 
