@@ -1,0 +1,204 @@
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>RUHAcam - 3D Printable Retro-style Camera</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="ruha.camera">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="A 3D Printable Retro-style Camera Powered by Raspberry Pi HQ Camera">
+<meta property="og:description" content="A 3D Printable Retro-style Camera Powered by Raspberry Pi HQ Camera">
+<link rel="canonical" href="https://ruha.camera/">
+<meta property="og:url" content="https://ruha.camera/">
+<meta property="og:site_name" content="ruha.camera">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="ruha.camera">
+<script type="application/ld+json">
+{"@type":"WebSite","url":"https://ruha.camera/","headline":"ruha.camera","description":"A 3D Printable Retro-style Camera Powered by Raspberry Pi HQ Camera","name":"ruha.camera","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=488824169a2dc5b4bb8c5e4accbff7cef69182b9">
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="https://ruha.camera/">RUHAcam</a></h1>
+        <p>A 3D Printable Retro-style Camera Powered by Raspberry Pi HQ Camera</p>
+
+        
+        <p class="view"><a href="https://github.com/penk/ruha.camera">View the Project on GitHub <small>penk/ruha.camera</small></a></p>
+        
+
+        
+
+        
+      </header>
+      <section>
+
+      <p><img src="https://github.com/penk/ruha.camera/raw/main/images/ruhacam-cover.jpg" alt=""></p>
+
+<h2 id="bill-of-materials">Bill of Materials</h2>
+
+<ul>
+  <li>Raspberry Pi Zero W + microSD card</li>
+  <li>Raspberry Pi HQ Camera</li>
+  <li>16mm 10MP Telephoto Lens</li>
+  <li>2.2” TFT Display</li>
+  <li>TP4056 Micro USB Battery Charger</li>
+  <li>MT3608 DC-DC Step Up Boost Module</li>
+  <li>2000mAh Li-Pi battery</li>
+  <li>Power switch</li>
+  <li>Shutter button</li>
+  <li>Dupont jumper wires</li>
+  <li>3D printed case (see <a href="https://github.com/penk/ruha.camera/tree/main/STL">STL</a> folder)</li>
+  <li>Leather patches for couch (optional)</li>
+</ul>
+
+<p><img src="https://github.com/penk/ruha.camera/raw/main/images/ruhacam-bom.jpg" alt=""></p>
+
+<h2 id="schematic">Schematic</h2>
+
+<ul>
+  <li>Power after converter connects to Pi’s <code class="language-plaintext highlighter-rouge">5V</code> (pin 4) and <code class="language-plaintext highlighter-rouge">GND</code> (pin 6)</li>
+  <li>Shutter button connects to <code class="language-plaintext highlighter-rouge">GPIO26</code> (pin 37) and <code class="language-plaintext highlighter-rouge">GND</code> (pin 39)</li>
+</ul>
+
+<p><img src="https://github.com/penk/ruha.camera/raw/main/images/ruhacam-schematic.jpg" alt=""></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Raspberry Pi pins</th>
+      <th>TFT display</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3v3 (pin 17)</td>
+      <td>VCC</td>
+    </tr>
+    <tr>
+      <td>GND (pin 20)</td>
+      <td>GND</td>
+    </tr>
+    <tr>
+      <td>GPIO8 (pin 24)</td>
+      <td>CS</td>
+    </tr>
+    <tr>
+      <td>GPIO23 (pin 16)</td>
+      <td>RESET</td>
+    </tr>
+    <tr>
+      <td>GPIO24 (pin 18)</td>
+      <td>DC</td>
+    </tr>
+    <tr>
+      <td>GPIO10 (pin 19)</td>
+      <td>MOSI</td>
+    </tr>
+    <tr>
+      <td>GPIO11 (pin 23)</td>
+      <td>SCK</td>
+    </tr>
+    <tr>
+      <td>GPIO18 (pin 12)</td>
+      <td>LED</td>
+    </tr>
+    <tr>
+      <td>GPIO9 (pin 21)</td>
+      <td>MISO</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="assembly">Assembly</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><img src="https://github.com/penk/ruha.camera/raw/main/images/asm-2.jpg" alt=""></th>
+      <th><img src="https://github.com/penk/ruha.camera/raw/main/images/asm-3.jpg" alt=""></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://github.com/penk/ruha.camera/raw/main/images/asm-4.jpg" alt=""></td>
+      <td><img src="https://github.com/penk/ruha.camera/raw/main/images/asm-1.jpg" alt=""></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="software">Software</h2>
+
+<p>Flash Raspberry Pi OS to micro SD card. Then add following lines into <code class="language-plaintext highlighter-rouge">config.txt</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpu_mem=256
+dtoverlay=rpi-display
+display_rotate=2
+</code></pre></div></div>
+
+<p>For application, simply execute this script after boot:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from gpiozero import Button
+from picamera import PiCamera
+import time
+
+button = Button(26)
+
+with PiCamera() as camera:
+    camera.resolution = (4056, 3040)
+    camera.framerate = 5
+    frame = int(time.time())
+    camera.start_preview()
+    while True:
+        button.wait_for_press()
+        camera.capture('/home/pi/Pictures/%03d.jpg' % frame)
+        frame += 1
+</code></pre></div></div>
+
+<h2 id="sample-pictures">Sample Pictures</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><img src="https://github.com/penk/ruha.camera/raw/main/images/1616840925.JPG" alt=""></th>
+      <th><img src="https://github.com/penk/ruha.camera/raw/main/images/1616769300.JPG" alt=""></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://github.com/penk/ruha.camera/raw/main/images/1616769323.JPG" alt=""></td>
+      <td><img src="https://github.com/penk/ruha.camera/raw/main/images/1616840940.JPG" alt=""></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="copyright-and-license">Copyright and License</h2>
+
+<p>Copyright (c) 2021 Ruha Cheng &amp; Penk Chen. All rights reserved.</p>
+
+<p>All files are licensed under MIT license, see the LICENSE for more information.</p>
+
+
+      </section>
+      <footer>
+        
+        <p>This project is maintained by <a href="https://github.com/penk">penk</a></p>
+        
+        <p><small>Hosted on GitHub Pages — Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+    
+  
+
+</body>
+</html>
