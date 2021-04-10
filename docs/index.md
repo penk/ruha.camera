@@ -1,7 +1,3 @@
-# RUHAcam 
-
-A 3D Printable Retro-style Camera Powered by Raspberry Pi HQ Camera
-
 ![](https://github.com/penk/ruha.camera/raw/main/images/ruhacam-cover.jpg)
 
 ## Bill of Materials 
