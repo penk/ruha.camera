@@ -22,8 +22,7 @@
 - Power after converter connects to Pi's `5V` (pin 4) and `GND` (pin 6)
 - Shutter button connects to `GPIO26` (pin 37) and `GND` (pin 39)
 
-| ![](https://github.com/penk/ruha.camera/raw/main/images/ruhacam-schematic.jpg) | ![](https://github.com/penk/ruha.camera/raw/main/images/ruhacam-schematic-2.jpg) |
-|-----|-----|
+![](https://github.com/penk/ruha.camera/raw/main/images/ruhacam-schematic.jpg) 
 
 | Raspberry Pi pins | TFT display |
 |-------------------|-------------|
