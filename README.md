@@ -1,6 +1,6 @@
 # RUHAcam 
 
-A 3D Printable Retro-style Camera Powered by Raspberry Pi HQ Camera
+A 3D Printable Retro-style Raspberry Pi HQ Camera
 
 ![](images/ruhacam-cover.jpg)
 
@@ -23,10 +23,11 @@ A 3D Printable Retro-style Camera Powered by Raspberry Pi HQ Camera
 
 ## Schematic
 
-- Power after converter connects to Pi's `5V` (pin 4) and `GND` (pin 6)
-- Shutter button connects to `GPIO26` (pin 37) and `GND` (pin 39)
+- Power from converter connects to Pi's `5V` (pin 4) and `GND` (pin 6)
+- Shutter button connects to `GPIO26` (pin 37) and `GND` (pin 39) 
 
-![](images/ruhacam-schematic.jpg)
+| ![](images/ruhacam-schematic.jpg) | ![](images/ruhacam-schematic-2.jpg) |
+|-----|-----|
 
 | Raspberry Pi pins | TFT display |
 |-------------------|-------------|
@@ -40,7 +41,7 @@ A 3D Printable Retro-style Camera Powered by Raspberry Pi HQ Camera
 | GPIO18 (pin 12) | LED | 
 | GPIO9 (pin 21) | MISO | 
 
-## Assembly 
+## Assembly
 
 | ![](images/asm-2.jpg) | ![](images/asm-3.jpg) |
 |-----------------------|-----------------------|
