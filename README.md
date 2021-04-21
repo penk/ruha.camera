@@ -6,7 +6,7 @@ A 3D Printable Retro-style Raspberry Pi HQ Camera
 
 ## Bill of Materials 
 
-- Raspberry Pi Zero W + microSD card 
+- Raspberry Pi Zero WH + microSD card 
 - Raspberry Pi HQ Camera 
 - 16mm 10MP Telephoto Lens 
 - 2.2" TFT Display 
