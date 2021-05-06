@@ -12,7 +12,7 @@ A 3D Printable Retro-style Raspberry Pi HQ Camera
 - 2.2" TFT Display 
 - TP4056 Micro USB Battery Charger 
 - MT3608 DC-DC Step Up Boost Module 
-- 2000mAh Li-Pi battery 
+- 2000mAh Lipo battery 
 - Power switch 
 - Shutter button 
 - Dupont jumper wires 
