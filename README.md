@@ -2,6 +2,12 @@
 
 A 3D Printable Retro-style Raspberry Pi HQ Camera
 
+## Limited NFT Offer - For Good Cause! 
+
+Visit [CaptureClub](https://captureclub.cc/drop-ruhacam) to collect limited RUHAcam NFT, 100% off at first purchase with promotion code `v5NbtC`.
+
+We will donate raised money to [Program the World](https://programtheworld.tw/main.php) Association, [learn more](https://medium.com/numbers-protocol).
+
 ![](images/ruhacam-cover.jpg)
 
 ## Bill of Materials 
